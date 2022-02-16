@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import { getAll } from './services/brastlewark'
+import { useDispatch } from 'react-redux'
+import { brastlewarkInit } from './store/brastlewark/actions'
+import FiltersDrawer from './components/FiltersDrawer'
+import Cards from './components/Cards'
+import Container from '@mui/material/Container';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    getAll().then( data => {
+      const brastlewarks = data.Brastlewark
+      dispatch(brastlewarkInit(brastlewarks))
+    })
+  }, [dispatch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container maxWidth="lg">
+      <FiltersDrawer/>
+      <Cards/>
+    </Container>
+  )
 }
 
-export default App;
+export default App

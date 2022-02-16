@@ -1,3 +1,9 @@
+# First Capgemini Challenge.⚡
+
+This project allows to visualize information about Brastlewark
+
+- It is possible to search by name typing part of the name and press enter or filter the results according to their age (specifying the range) or choosing the hair color
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
